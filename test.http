@@ -1,0 +1,14 @@
+POST http://localhost:4000/spartners
+Content-Type: application/json
+
+{
+    "title":"Support",
+    "imageUrl":"../../../partner1.jpg",
+    "desc":"this is partner3",
+    "city":"Hyderabad",
+    "year": "2021"
+
+}
+
+###
+GET http://localhost:4000/spartners
