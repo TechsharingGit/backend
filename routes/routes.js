@@ -24,7 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 router.post('/', async (request, response) => {
     const saltPassword = await bcrypt.genSalt(10);
     const securePassword = await bcrypt.hash(request.body.password,saltPassword)
-
+    const bd = request.body;
+    console.log(bd);
     const signedUpUser =  new signUpTemplateCopy({
         fullname:request.body.fullname,
         email:request.body.email,
@@ -70,6 +71,24 @@ router.get("/",(req,res) => {
     .catch(error =>{
         response.json(error)
     })
+
+})
+
+router.post('/signin', async (req,res) => {
+    const body = req.body;
+    console.log(body);
+    const user = await signUpTemplateCopy.findOne({ email: body.email });
+    if (user){
+     const validPassword = await bcrypt.compare(body.password, user.password);
+        if(validPassword) {
+            res.status(200).json({ message: "Valid password" });
+        } else {
+          res.status(400).json({ error: "Invalid Password" });
+        }
+    }
+        else{
+            res.status(401).json({ error: "User does not exist" });
+        }
 
 })
 
