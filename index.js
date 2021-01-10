@@ -8,7 +8,7 @@ const cors = require('cors');
 
 
 dotenv.config();
-
+var port = process.env.PORT || 4000;
 //const db = require('./keys').MongoURI;
 
 //mongoose.connect(db,{ useNewUrlParser:true}, () => console.log("Database Connected"));
@@ -17,4 +17,6 @@ mongoose.connect(process.env.DATABASE_ACCESS,{ useNewUrlParser:true}, () => cons
 app.use(express.json());
 app.use(cors());
 app.use(routeUrls);
-app.listen(4000,() => console.log("server is up and running"));
+
+
+app.listen(port,() => console.log("server is up and running"));

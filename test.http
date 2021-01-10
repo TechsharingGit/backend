@@ -18,3 +18,20 @@ Content-Type: application/json
     "email":"testttt@xyz.com",
     "password":"testing1234"
 }
+
+#####
+POST http://localhost:4000/app2/spartners
+Content-Type: application/json
+
+
+{
+    "title": "Tester21",
+    "imageUrl": "img21.jpg",
+    "desc": "This is a testing ",
+    "city" : "Chennai",
+    "year" : "2021"
+
+}
+
+###
+GET http://localhost:4000/app2/spartners

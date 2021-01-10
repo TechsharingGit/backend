@@ -31,7 +31,8 @@ router.post('/', async (request, response) => {
         email:request.body.email,
         password:securePassword,
         phoneNo:request.body.phoneNo,
-        city:request.body.city,
+        states:request.body.states,
+        cities:request.body.cities,
         vertical:request.body.vertical
     });
     signedUpUser.save()
@@ -92,7 +93,7 @@ router.post('/signin', async (req,res) => {
 
 })
 
-router.post('/spartners', (request, response) => {
+router.post('/app2/spartners', (request, response) => {
     const newPartner =  new partnertemplate({
         title:request.body.title,
         imageUrl:request.body.imageUrl,
@@ -109,7 +110,7 @@ router.post('/spartners', (request, response) => {
     })
 })
 
-router.get("/spartners",(req,res) => {
+router.get("/app2/spartners",(req,res) => {
 
     partnertemplate.find()
     .then(partnerdata => {res.json(partnerdata)
